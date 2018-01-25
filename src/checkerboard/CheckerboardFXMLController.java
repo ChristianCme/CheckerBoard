@@ -11,22 +11,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
  *
  * @author christiancw
  */
-public class CheckerboardFXMLController implements Initializable
+public class CheckerboardFXMLController implements Initializable,Startable
 {
     
-    @FXML
-    private Label label;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event)
+    @Override
+    public void start(Stage stage)
     {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        
     }
     
     @Override
