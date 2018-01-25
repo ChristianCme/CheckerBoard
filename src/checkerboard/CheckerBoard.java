@@ -5,6 +5,7 @@
  */
 package checkerboard;
 
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 
@@ -22,7 +23,8 @@ public class CheckerBoard
     private double boardWidth;
     private double rectangleHeight;
     private double rectangleWidth;
-
+    private AnchorPane board;
+    
     public CheckerBoard(int numRows, int numCols, double boardHeight, double boardWidth, Color lightColor, Color darkColor)
     {
         this.numRows = numRows;
@@ -37,7 +39,12 @@ public class CheckerBoard
     {
         this(numRows, numCols, boardHeight, boardWidth, Color.RED, Color.BLACK);
     }
-
+    
+    public AnchorPane build()
+    {
+        
+        return board;
+    }
     
     public int getNumRows()
     {
@@ -79,5 +86,9 @@ public class CheckerBoard
         return rectangleHeight;
     }
     
-    
+    public AnchorPane getBoard()
+    {
+        return board;
+    }
+
 }
