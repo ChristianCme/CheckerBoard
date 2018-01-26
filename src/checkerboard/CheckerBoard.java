@@ -7,6 +7,7 @@ package checkerboard;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 
 /**
@@ -21,8 +22,8 @@ public class CheckerBoard
     private Color darkColor;
     private double boardHeight;
     private double boardWidth;
-    private double rectangleHeight;
-    private double rectangleWidth;
+    private double rectHeight;
+    private double rectWidth;
     private AnchorPane board;
     
     public CheckerBoard(int numRows, int numCols, double boardHeight, double boardWidth, Color lightColor, Color darkColor)
@@ -33,6 +34,9 @@ public class CheckerBoard
         this.boardWidth = boardWidth;
         this.lightColor = lightColor;
         this.darkColor = darkColor;
+        this.rectWidth = Math.ceil(boardWidth / numCols);
+        this.rectHeight = Math.ceil(boardHeight / numRows);
+
     }
     
     public CheckerBoard(int numRows, int numCols, double boardHeight, double boardWidth)
@@ -42,8 +46,30 @@ public class CheckerBoard
     
     public AnchorPane build()
     {
+        AnchorPane newBoard = new AnchorPane();
         
-        return board;
+        for (int i = 0; i < numCols; i++)
+        {
+            for (int j = 0; j < numRows; j++)
+            {
+                Rectangle rect;
+                if (i + j % 2 == 0) 
+                {
+                    rect = new Rectangle(rectWidth, rectHeight, lightColor);
+                }
+                else 
+                {
+                    rect = new Rectangle(rectWidth, rectHeight, darkColor);
+                }
+                
+                newBoard.getChildren().add(rect);
+            }
+            
+        }
+        
+        this.board = newBoard;
+        
+        return newBoard;
     }
     
     public int getNumRows()
@@ -78,12 +104,12 @@ public class CheckerBoard
 
     public double getRectangleWidth()
     {
-        return rectangleWidth;
+        return rectWidth;
     }
 
     public double getRectangleHeight()
     {
-        return rectangleHeight;
+        return rectHeight;
     }
     
     public AnchorPane getBoard()
