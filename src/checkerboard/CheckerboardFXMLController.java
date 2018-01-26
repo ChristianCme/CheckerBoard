@@ -7,6 +7,8 @@ package checkerboard;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,10 +23,16 @@ public class CheckerboardFXMLController implements Initializable,Startable
 {
     public Stage stage;
     
+    public ChangeListener<Number> lambdaChangeListener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> 
+    {
+        
+    };
+
+    
     @FXML
     public void handle3x3()
     {
-        refresh(new CheckerBoard(3, 3, board.getHeight(), gboard.getWidth()).build());
+//        refresh(new CheckerBoard(3, 3, board.getHeight(), board.getWidth()).build());
     }
     
     @FXML
@@ -61,6 +69,9 @@ public class CheckerboardFXMLController implements Initializable,Startable
     public void start(Stage stage)
     {
         this.stage = stage;
+        
+        this.stage.widthProperty().addListener(lambdaChangeListener);
+        this.stage.heightProperty().addListener(lambdaChangeListener);
     }
     
     @Override
@@ -71,7 +82,7 @@ public class CheckerboardFXMLController implements Initializable,Startable
     
     public void refresh(AnchorPane anchorPane)
     {
-       
+  
     }
     
 }
