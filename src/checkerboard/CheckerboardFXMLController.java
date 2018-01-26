@@ -19,6 +19,41 @@ import javafx.stage.Stage;
  */
 public class CheckerboardFXMLController implements Initializable,Startable
 {
+    @FXML
+    public void handle3x3()
+    {
+        
+    }
+    
+    @FXML
+    public void handle8x8()
+    {
+        
+    }
+    
+    @FXML
+    public void handle10x10()
+    {
+        
+    }
+    
+    @FXML
+    public void handle16x16()
+    {
+        
+    }
+    
+    @FXML
+    public void handleDefault()
+    {
+        
+    }
+
+    @FXML
+    public void handleBlue()
+    {
+        
+    }
     
     @Override
     public void start(Stage stage)
