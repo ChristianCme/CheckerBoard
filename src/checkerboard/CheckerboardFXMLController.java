@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -19,10 +19,12 @@ import javafx.stage.Stage;
  */
 public class CheckerboardFXMLController implements Initializable,Startable
 {
+    public Stage stage;
+    
     @FXML
     public void handle3x3()
     {
-        
+        refresh(new CheckerBoard(3, 3, board.getHeight(), gboard.getWidth()).build());
     }
     
     @FXML
@@ -58,13 +60,18 @@ public class CheckerboardFXMLController implements Initializable,Startable
     @Override
     public void start(Stage stage)
     {
-        
+        this.stage = stage;
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        
     }    
+    
+    public void refresh(AnchorPane anchorPane)
+    {
+       
+    }
     
 }
