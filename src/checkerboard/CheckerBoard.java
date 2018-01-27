@@ -53,7 +53,7 @@ public class CheckerBoard
             for (int j = 0; j < numRows; j++)
             {
                 Rectangle rect;
-                if (i + j % 2 == 0) 
+                if ((i + j) % 2 == 0) 
                 {
                     rect = new Rectangle(rectWidth, rectHeight, lightColor);
                 }
@@ -61,7 +61,8 @@ public class CheckerBoard
                 {
                     rect = new Rectangle(rectWidth, rectHeight, darkColor);
                 }
-                
+                AnchorPane.setTopAnchor(rect, i * rectHeight);
+                AnchorPane.setLeftAnchor(rect, j * rectWidth);
                 newBoard.getChildren().add(rect);
             }
             
