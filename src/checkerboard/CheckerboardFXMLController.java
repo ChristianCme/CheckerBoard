@@ -78,9 +78,9 @@ public class CheckerboardFXMLController implements Initializable,Startable
     public void start(Stage stage)
     {
         this.stage = stage;
+        refresh(new CheckerBoard(8, 8, anchorPane.getHeight(), anchorPane.getWidth()));
         this.stage.widthProperty().addListener(lambdaChangeListener);
         this.stage.heightProperty().addListener(lambdaChangeListener);
-        refresh(new CheckerBoard(8, 8, anchorPane.getHeight(), anchorPane.getWidth()));
     }
     
     @Override
@@ -99,6 +99,7 @@ public class CheckerboardFXMLController implements Initializable,Startable
             vbox.getChildren().remove(anchorPane);
             anchorPane = checkerBoard.getBoard();
             vbox.getChildren().add(anchorPane);
+            this.checkerBoard = checkerBoard;
         }
         
     }
