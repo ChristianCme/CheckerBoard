@@ -12,6 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -30,48 +31,51 @@ public class CheckerboardFXMLController implements Initializable,Startable
     public VBox vbox;
     
     @FXML
+    public MenuBar menuBar;
+    
+    @FXML
     public AnchorPane anchorPane;
     
     public ChangeListener<Number> lambdaChangeListener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> 
     {
-        refresh(new CheckerBoard(this.checkerBoard.getNumRows(), this.checkerBoard.getNumCols(), 0, 0, this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
+        refresh(new CheckerBoard(this.checkerBoard.getNumRows(), this.checkerBoard.getNumCols(), stage.getScene().getHeight() - menuBar.getHeight(), stage.getScene().getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
     };
 
     
     @FXML
     public void handle3x3()
     {
-        refresh(new CheckerBoard(3, 3, this.checkerBoard.getHeight(), this.checkerBoard.getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
+        refresh(new CheckerBoard(3, 3, stage.getScene().getHeight() - menuBar.getHeight(), stage.getScene().getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
     }
     
     @FXML
     public void handle8x8()
     {
-        refresh(new CheckerBoard(8, 8, this.checkerBoard.getHeight(), this.checkerBoard.getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
+        refresh(new CheckerBoard(8, 8, stage.getScene().getHeight() - menuBar.getHeight(), stage.getScene().getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
     }
     
     @FXML
     public void handle10x10()
     {
-        refresh(new CheckerBoard(10, 10, this.checkerBoard.getHeight(), this.checkerBoard.getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
+        refresh(new CheckerBoard(10, 10, stage.getScene().getHeight() - menuBar.getHeight(), stage.getScene().getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
     }
     
     @FXML
     public void handle16x16()
     {
-        refresh(new CheckerBoard(16, 16, this.checkerBoard.getHeight(), this.checkerBoard.getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
+        refresh(new CheckerBoard(16, 16, stage.getScene().getHeight() - menuBar.getHeight(), stage.getScene().getWidth(), this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
     }
     
     @FXML
     public void handleDefault()
     {
-        refresh(new CheckerBoard(this.checkerBoard.getNumRows(), this.checkerBoard.getNumCols(), this.checkerBoard.getHeight(), this.checkerBoard.getWidth()));
+        refresh(new CheckerBoard(this.checkerBoard.getNumRows(), this.checkerBoard.getNumCols(), stage.getScene().getHeight() - menuBar.getHeight(), stage.getScene().getWidth()));
     }
 
     @FXML
     public void handleBlue()
     {
-        refresh(new CheckerBoard(this.checkerBoard.getNumRows(), this.checkerBoard.getNumCols(), this.checkerBoard.getHeight(), this.checkerBoard.getWidth(), Color.SKYBLUE, Color.DARKBLUE));
+        refresh(new CheckerBoard(this.checkerBoard.getNumRows(), this.checkerBoard.getNumCols(), stage.getScene().getHeight() - menuBar.getHeight(), stage.getScene().getWidth(), Color.SKYBLUE, Color.DARKBLUE));
     }
     
     @Override
