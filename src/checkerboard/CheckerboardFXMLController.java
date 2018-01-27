@@ -29,6 +29,9 @@ public class CheckerboardFXMLController implements Initializable,Startable
     @FXML
     public VBox vbox;
     
+    @FXML
+    public AnchorPane anchorPane;
+    
     public ChangeListener<Number> lambdaChangeListener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> 
     {
         refresh(new CheckerBoard(this.checkerBoard.getNumRows(), this.checkerBoard.getNumCols(), 0, 0, this.checkerBoard.getLightColor(), this.checkerBoard.getDarkColor()));
@@ -77,6 +80,7 @@ public class CheckerboardFXMLController implements Initializable,Startable
         this.stage = stage;
         this.stage.widthProperty().addListener(lambdaChangeListener);
         this.stage.heightProperty().addListener(lambdaChangeListener);
+        refresh(new CheckerBoard(8, 8, anchorPane.getHeight(), anchorPane.getWidth()));
     }
     
     @Override
@@ -87,7 +91,16 @@ public class CheckerboardFXMLController implements Initializable,Startable
     
     public void refresh(CheckerBoard checkerBoard)
     {
-        checkerBoard.build();
+        if(checkerBoard.build() == null)
+        {
+        }
+        else
+        {
+            vbox.getChildren().remove(anchorPane);
+            anchorPane = checkerBoard.getBoard();
+            vbox.getChildren().add(anchorPane);
+        }
+        
     }
     
 }
